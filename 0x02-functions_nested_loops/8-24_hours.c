@@ -1,24 +1,33 @@
-#include "holberton.h"
+#include "main.h"
+
 /**
-  * jack_bauer - it's going to print 24 hours
-  *
-  * Return: 0
-  */
+ * jack_bauer - func that prints every minute of the day of jack Bauer,
+ * starting from 00:00 to 23:59, min loop counts mins, while hr counts hr
+ * and resests mins
+ * Return 0
+*/
 void jack_bauer(void)
 {
-int hours;
-int minutes;
+	int hours = 0;
+	int minutes = 0;
+	int hrs_remainder;
+	int mins_remainder;
 
-	for (hours = 0; hours < 24; hours++)
+	while (hours <= 23)
 	{
-		for (minutes = 0; minutes < 60; minutes++)
+		while (minutes <= 59)
 		{
+			mins_remainder = minutes % 10;
+			hrs_remainder = hours % 10;
 			_putchar(hours / 10 + '0');
-			_putchar(hours % 10 + '0');
+			_putchar(hrs_remainder + '0');
 			_putchar(':');
 			_putchar(minutes / 10 + '0');
-			_putchar(minutes % 10 + '0');
+			_putchar(mins_remainder + '0');
+			minutes++;
 			_putchar('\n');
 		}
+		hours++;
+		minutes = 0;
 	}
 }
